@@ -1,21 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Board {
-    
-    private JFrame f = new JFrame();
-    private JPanel panel = new JPanel();
-
+public class Board extends JFrame{
     public Board(){
-        //panel.add();
-        f.setContentPane(panel);
-        f.setTitle("Draughts");
-        f.setSize(640, 640);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
-
+        super("Draughts");
+        setSize(640, 640);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        JPanel panel = new JPanel();
+        add(panel);
         GridLayout grid = new GridLayout(8,8);
-        f.setLayout(grid);
+        panel.setLayout(grid);
 
         //create a black and white squares board
         for(int i=0; i<8; i++)						
@@ -36,9 +31,6 @@ public class Board {
 			   panel.add(l);
            }
         }   
-    }
-    public static void main(String[] arguments){
-        Board frame = new Board();
     }
 }
 
