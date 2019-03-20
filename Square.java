@@ -6,6 +6,7 @@ public class Square extends JButton{
     private int squareX;
     private int squareY;
     private SquareType squareType;
+    private CheckerType checkerType;
 
     public Square(int x, int y){
         
@@ -29,4 +30,11 @@ public class Square extends JButton{
     public void setSquareType(SquareType squareType){
         this.squareType = squareType;
     }
+    public CheckerType getCheckerType() {
+		return checkerType;
+	}
+
+	public void setCheckerType(CheckerType checkerType) {
+		this.checkerType = checkerType;
+	}
 }

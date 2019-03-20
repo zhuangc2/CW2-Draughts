@@ -22,6 +22,8 @@ public class Board extends JPanel implements ActionListener{
         initialiseSquareArr();
         addSquareToPanel();
         setLayout(grid);
+
+        addWhiteChecker();
     }
     private void initialiseSquareArr(){
         for(int i = 0; i < 8; i++)						
@@ -82,7 +84,20 @@ public class Board extends JPanel implements ActionListener{
 
     public Dimension getPreferredSize() {
 		return new Dimension(640, 640);
-	}
+    }
+    
+    public void addWhiteChecker(){
+        for (int i = 5; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if (squareArr[i][j].getSquareType() == SquareType.White){
+                    squareArr[i][j].setIcon(new ImageIcon(Source.WhiteChecker));
+                    squareArr[i][j].setCheckerType(CheckerType.White);
+                }
+            }
+        }
+    }
 
 
     public static void main(String[] arguments){
