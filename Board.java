@@ -16,7 +16,6 @@ public class Board extends JPanel implements ActionListener{
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(640, 640);
-		frame.pack();
 		frame.setVisible(true);
     }
     public void createAndShowGUI(){
@@ -78,8 +77,7 @@ public class Board extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent actionEvent) {
-		Object src = actionEvent.getSource();
-        if ( !(src instanceof Square) ) return;
+
     }
 
     public Dimension getPreferredSize() {
