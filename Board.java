@@ -2,35 +2,43 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Board extends JFrame{
-    public Board(){
-        super("Draughts");
-        setSize(640, 640);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        JPanel panel = new JPanel();
-        add(panel);
-        GridLayout grid = new GridLayout(8,8);
-        panel.setLayout(grid);
+    GridLayout grid = new GridLayout(8,8);
+    private Square squareArr[][] = new Square[8][8];
 
-        //create a black and white squares board
-        for(int i=0; i<8; i++)						
+    public Board(){
+        //super("Draughts");
+        createAndShowGUI();
+        JFrame frame = new JFrame("Draughts");
+        //frame.setContentpane(this);
+        frame.setSize(640, 640);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+    public void createAndShowGUI(){
+        initialiseSquareArr();
+        addSquareToPanel();
+        setLayout(grid);
+    }
+    public void initialiseSquareArr(){
+        for(int i = 0; i < 8; i++)						
 	   {
-		   for(int j=0; j<8; j++)					
+		   for(int j = 0; j < 8; j++)					
 		   {
-			   JLabel l = new JLabel();
-			   if((i+j)%2==0)
-			   {
-				   l.setBackground(Color.black);
-				   l.setOpaque(true);
-			   }
-			   else
-			   {
-				   l.setBackground(Color.white);
-				   l.setOpaque(true);
-			   }
-			   panel.add(l);
+               Square square = new Square(i,j);
+               square.setVisible(true);
+               square.setSquareX(i);
+               square.setSquareY(j);
+               squareArr[i][j] = square;
            }
         }   
+    }
+    public void addSquareToPanel(){
+
+    }
+
+    public static void main(String[] arguments){
+        Board board = new Board();
     }
 }
 
