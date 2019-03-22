@@ -4,8 +4,23 @@ import java.util.ArrayList;
 import java.awt.event.*;
 
 public class Board extends JPanel implements ActionListener, MouseListener{
-    GridLayout grid = new GridLayout(8,8);
-    private Square squareArr[][] = new Square[8][8];
+    //define variables
+    public static final int HEIGHT = 640;
+    public static final int WIDTH = 640;
+    public static final int GRID_HEIGHT = 8;
+    public static final int GRID_WIDTH = 8;
+    public static final int GRID_X = 8;
+    public static final int GRID_Y = 8;
+    public static final int FIRSTROW_WHITE = 5;
+    public static final int FIRSTROW_RED = 0;
+    public static final int LASTROW_WHITE = 8;
+    public static final int LASTROW_RED = 3;
+    public static final int FIRST_CLN = 0;
+    public static final int LAST_CLN = 8;
+
+
+    GridLayout grid = new GridLayout(GRID_HEIGHT, GRID_WIDTH);
+    private Square squareArr[][] = new Square[GRID_X][GRID_Y];
 
     private Square currClicked = null;
 	private ArrayList<Square> ValideMoves = new ArrayList<>();
@@ -18,7 +33,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
         frame.setContentPane(this);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(640, 640);
+		frame.setSize(Board.HEIGHT, Board.WIDTH);
 		frame.setVisible(true);
     }
     public void createAndShowGUI(){
@@ -32,9 +47,9 @@ public class Board extends JPanel implements ActionListener, MouseListener{
         
     }
     private void initialiseSquareArr(){
-        for(int i = 0; i < 8; i++)						
+        for(int i = 0; i < Board.GRID_X; i++)						
 	   {
-		   for(int j = 0; j < 8; j++)					
+		   for(int j = 0; j < Board.GRID_Y; j++)					
 		   {
             Square s = new Square(i,j);
             s.setVisible(true);
@@ -46,9 +61,9 @@ public class Board extends JPanel implements ActionListener, MouseListener{
         }   
     }
     private void addSquareToPanel(){
-        for(int i = 0; i < 8; i++)						
+        for(int i = 0; i < Board.GRID_X; i++)						
 	   {
-		   for(int j = 0; j < 8; j++)					
+		   for(int j = 0; j < Board.GRID_Y; j++)					
 		   {
                if (i%2 ==0)
                {
@@ -85,13 +100,13 @@ public class Board extends JPanel implements ActionListener, MouseListener{
     }
 
     public Dimension getPreferredSize() {
-		return new Dimension(640, 640);
+		return new Dimension(Board.HEIGHT, Board.WIDTH);
     }
     
     public void addWhiteChecker(){
-        for (int i = 5; i < 8; i++)
+        for (int i = Board.FIRSTROW_WHITE; i < Board.LASTROW_WHITE; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = Board.FIRST_CLN; j < Board.FIRST_CLN; j++)
             {
                 if (squareArr[i][j].getSquareType() == SquareType.White){
                     squareArr[i][j].setIcon(new ImageIcon(Source.WhiteChecker));
@@ -102,9 +117,9 @@ public class Board extends JPanel implements ActionListener, MouseListener{
     }
 
     public void addRedChecker(){
-        for (int i = 0; i < 3; i++)
+        for (int i = Board.FIRSTROW_RED; i < Board.LASTROW_RED; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = Board.FIRST_CLN; j < Board.LAST_CLN; j++)
             {
                 if (squareArr[i][j].getSquareType() == SquareType.White){
                     squareArr[i][j].setIcon(new ImageIcon(Source.RedChecker));
