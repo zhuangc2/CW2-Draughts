@@ -106,7 +106,7 @@ public class Board extends JPanel implements ActionListener, MouseListener{
     public void addWhiteChecker(){
         for (int i = Board.FIRSTROW_WHITE; i < Board.LASTROW_WHITE; i++)
         {
-            for (int j = Board.FIRST_CLN; j < Board.FIRST_CLN; j++)
+            for (int j = Board.FIRST_CLN; j < Board.LAST_CLN; j++)
             {
                 if (squareArr[i][j].getSquareType() == SquareType.White){
                     squareArr[i][j].setIcon(new ImageIcon(Source.WhiteChecker));
